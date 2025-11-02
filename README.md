@@ -1,6 +1,6 @@
 Trabajo Práctico Integrador Final – Laboratorio I  Control de versiones
 
-Este proyecto es un simulador de sistema bancario desarrollado en Python, que implementa, manejo de errores con try/except, generación de reportes en PDF y una interfaz por consola tipo menú.
+Este proyecto es un simulador de sistema bancario desarrollado en Python, que implementa, manejo de errores con try/except, generación de reportes en PDF, una interfaz grafica con flet y otra mediante la consola o terminal tipo menú.
 
 El sistema permite:
 >Registrar clientes con usuario y PIN (4 dígitos).
@@ -8,12 +8,14 @@ El sistema permite:
 >Realizar depósitos, retiros y transferencias entre cuentas.
 >Generar reportes PDF con los datos e historial de cada cliente.
 >Navegar por un menú en consola (simulando un sistema de cajero o banca online).
+>Navegar por una interfaz grafica mediante flet.
 
 Tecnologías utilizadas
 >Python 3.13.9
 >fpdf2 → generación de PDFs.
 >pytest → pruebas unitarias.
 >venv → entorno virtual recomendado.
+>flet → versión grafica del menú.
 
 Crear y activar entorno virtual:
 
