@@ -30,8 +30,11 @@ source .venv/bin/activate
 Instalar dependencias:
 pip install -r requirements.txt
 
-Ejecutar programa:
+Ejecutar programa por consola:
 python main.py
+
+Ejecutar programa por flet:
+python main_flet.py
 
 Ejecución de tests:
 pytest
