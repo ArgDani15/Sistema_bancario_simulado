@@ -13,8 +13,7 @@ from generator_pdf import generar_pdf
 manager = BankManager()
 
 # ---------- Utilidades ----------
-def show_snack(page: Page, text: str):
-    """Muestra un SnackBar y actualiza la página."""
+def show_snack(page: Page, text: str):
     try:
         page.snack_bar = SnackBar(Text(text))
         page.snack_bar.open = True
@@ -30,8 +29,7 @@ def safe_float(val: str) -> Optional[float]:
         return None
 
 # ---------- Wrappers para compatibilidad con distintas APIs de BankManager ----------
-def wrap_create_client(first, last, dni, username, pin):
-    """Intenta distintos nombres de método para crear cliente."""
+def wrap_create_client(first, last, dni, username, pin):
     try:
         if hasattr(manager, "create_client"):
             return manager.create_client(first, last, dni, username, pin)
@@ -42,7 +40,7 @@ def wrap_create_client(first, last, dni, username, pin):
         raise
 
 def wrap_get_clients() -> List:
-    """Devuelve la lista de clientes (soporta métodos/atributos distintos)."""
+    """Devuelve la lista de clientes"""
     if hasattr(manager, "clients") and callable(getattr(manager, "clients")):
         return manager.clients()
     if hasattr(manager, "clientes"):
@@ -65,8 +63,7 @@ def wrap_find_client_by_username(username: str):
     if hasattr(manager, "buscar_cliente"):
         return manager.buscar_cliente(username)
     # si no hay método, hacer búsqueda manual sobre wrap_get_clients
-    for c in wrap_get_clients():
-        # algunos objetos usan .username o .usuario
+    for c in wrap_get_clients():
         uname = getattr(c, "username", None) or getattr(c, "usuario", None)
         if uname == username:
             return c
@@ -76,8 +73,7 @@ def wrap_create_account_for_client(client, alias: str):
     if hasattr(manager, "create_account_for_client"):
         return manager.create_account_for_client(client, alias)
     if hasattr(manager, "crear_cuenta"):
-        return manager.crear_cuenta(client, alias)
-    # si no existe, intentar crear Account directamente si clase accesible
+        return manager.crear_cuenta(client, alias)
     raise AttributeError("El gestor no expone método para crear cuenta.")
 
 def wrap_find_accounts_by_alias(alias: str):
