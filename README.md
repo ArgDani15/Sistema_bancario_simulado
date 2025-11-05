@@ -38,5 +38,8 @@ python main.py
 Ejecutar programa por flet:
 python main_flet.py
 
+Versión para navegador:
+flet run --web main_flet.py
+
 Ejecución de tests:
 pytest
